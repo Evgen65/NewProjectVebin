@@ -10,7 +10,7 @@ import java.util.List;
 public class TestBase {
 
     WebDriver wd;
-    static ApplicationManager app =new ApplicationManager();
+   public static ApplicationManager app =new ApplicationManager();
 
     @BeforeSuite
     public void setUp(){

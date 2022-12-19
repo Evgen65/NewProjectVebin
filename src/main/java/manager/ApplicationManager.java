@@ -14,7 +14,7 @@ public class ApplicationManager {
 
     public void init() {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("load-extension=C:/Tools/3.15.2_0");
+        options.addArguments("load-extension=C:\\Tools\\3.15.2_0");
         wd = new ChromeDriver(options);
 
         wd.manage().window().maximize();
@@ -23,6 +23,7 @@ public class ApplicationManager {
         studentForm = new HelperStudentForm(wd);
         //Thread.sleep();
         remturnToDome();
+
 
     }
 

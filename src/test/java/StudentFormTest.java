@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 public class StudentFormTest extends TestBase {
     @BeforeMethod
     public void preCondition() {
+        //app.studentForm().pause(3000);
         app.studentForm().selectItemForms();
         app.studentForm().selectPracticeForm();
     }
@@ -22,7 +23,8 @@ public class StudentFormTest extends TestBase {
                 .hobbies("Sport")
                 .address("Tel Aviv")
                 .state("NCR")
-                .city("Gurgaon").build();
+                .city("Gurgaon")
+                .build();
         app.studentForm().fillStudentForm(student);
 
     }
