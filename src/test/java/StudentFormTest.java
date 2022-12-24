@@ -27,6 +27,9 @@ public class StudentFormTest extends TestBase {
                 .build();
         app.studentForm().fillStudentForm(student);
 
+        app.studentForm().uploadPhoto("");
+      //  app.studentForm().submitForm();
+
     }
 
 

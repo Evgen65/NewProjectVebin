@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 
 public class HelperStudentForm extends HelperBase {
+    //  public void submitForm;
+
     public HelperStudentForm(WebDriver wd) {
         super(wd);
     }
@@ -32,10 +34,19 @@ public class HelperStudentForm extends HelperBase {
         //selectBirthday(student.getBirthday());
         addSubjects(student.getSubject());
         selectHobby(student.getHobbies());
-        type(By.cssSelector("textarea[placeholder='Current Address']"), student.getAddress());
-        // selectState(student.getState());
-        //  selectCity(student.getCity());
+        type(By.cssSelector("Current Address"), student.getAddress());
+        typeState(student.getState());
+        typeCity(student.getCity());
 
+    }
+
+    private void typeState(String state) {
+    }
+
+    private void typeCity(String city) {
+    }
+
+    public void submitForm() {
     }
 
     private void selectHobby(String hobbies) {
@@ -132,6 +143,9 @@ public class HelperStudentForm extends HelperBase {
         click(By.xpath("(//div)[73]"));
         click(By.xpath("//div[contains(text(),'NCR')]"));
 
+    }
+
+    public void uploadPhoto(String s) {
     }
 
 //    public void checkPolicy() {
