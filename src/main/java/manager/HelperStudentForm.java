@@ -39,16 +39,14 @@ public class HelperStudentForm extends HelperBase {
         typeCity(student.getCity());
 
     }
-
-    private void typeState(String state) {
-    }
-
     private void typeCity(String city) {
+        wd.findElements(By.id("react-select-4-input")).sendKeys(sity);
+    }
+    private void typeState(String state) {
     }
 
     public void submitForm() {
     }
-
     private void selectHobby(String hobbies) {
         //label[for='hobbies-checkbox-1']
         String[] all = hobbies.split(" , ");
