@@ -1,25 +1,18 @@
 package manager;
 
 import models.Student;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
 public class HelperStudentForm extends HelperBase {
-    //  public void submitForm;
-
     public HelperStudentForm(WebDriver wd) {
         super(wd);
     }
-
     public void selectItemForms() {
         click(By.xpath("//div[@class='category-cards']/div[2]"));
     }
-
     public void selectPracticeForm() {
         click(By.xpath("//span[text()='Practice Form']"));
     }
@@ -30,8 +23,8 @@ public class HelperStudentForm extends HelperBase {
         type(By.cssSelector("input[placeholder='name@example.com']"), student.getEmail());
         selectGender(student.getGender());
         type(By.cssSelector("input[placeholder='Mobile Number']"), student.getPhone());
-        typeBirthday(student.getBirthday());
-        //selectBirthday(student.getBirthday());
+        // typeBirthday(student.getBirthday());
+        selectBirthday(student.getBirthday());
         addSubjects(student.getSubject());
         selectHobby(student.getHobbies());
         type(By.cssSelector("Current Address"), student.getAddress());
@@ -39,14 +32,25 @@ public class HelperStudentForm extends HelperBase {
         typeCity(student.getCity());
 
     }
+
     private void typeCity(String city) {
-        wd.findElements(By.id("react-select-4-input")).sendKeys(sity);
-    }
-    private void typeState(String state) {
+        wd.findElement(By.id("react-select-4-input")).sendKeys(city);
+        wd.findElement(By.id("react-select-4-input")).sendKeys(Keys.ENTER);
     }
 
-    public void submitForm() {
+    private void typeState(String state) {
+        Dimension dimension = wd.manage().window().getSize();
+        System.out.println("Height---->" + dimension.getHeight());
+
+        JavascriptExecutor js = (JavascriptExecutor) wd;
+        js.executeScript("window.scrollBy(0,400);");
+
+        // type(By.id("react-select-3-input"),state);
+        wd.findElement(By.id("react-select-3-input")).sendKeys(state);
+        wd.findElement(By.id("react-select-3-input")).sendKeys(Keys.ENTER);
     }
+
+
     private void selectHobby(String hobbies) {
         //label[for='hobbies-checkbox-1']
         String[] all = hobbies.split(" , ");
@@ -66,20 +70,21 @@ public class HelperStudentForm extends HelperBase {
     }
 
     private void addSubjects(String subject) {
-        String[] all = new String[0];
+
         if (subject != null) {
-            all = subject.split(",");
+            String[] all = subject.split(",");
+
+            click(By.id("subjectsInput"));
+
+            for (String sub : all) {
+                WebElement el = wd.findElement(By.id("subjectsInput"));
+                el.sendKeys(sub);
+                el.sendKeys(Keys.ENTER);
+                pause(1000);
+
+            }
+
         }
-        click(By.id("subjectsInput"));
-
-        for (String sub : all) {
-            WebElement el = wd.findElement(By.id("subjectsInput"));
-            el.sendKeys(sub);
-            el.sendKeys(Keys.ENTER);
-            pause(1000);
-
-        }
-
     }
 
     private void selectGender(String gender) {
@@ -113,7 +118,6 @@ public class HelperStudentForm extends HelperBase {
             list.get(0).click();
         }
     }
-
     public void typeBirthday(String birthday) {
         WebElement dbirth = wd.findElement(By.id("dateOfBirthInput"));
         dbirth.click();
@@ -128,32 +132,18 @@ public class HelperStudentForm extends HelperBase {
         dbirth.sendKeys(birthday);
         dbirth.sendKeys(Keys.ENTER);
 
-
     }
 
-    private void selectCity(String city) {
-        click(By.xpath("(//div[@aria-hidden='true'])[2]"));
-        click(By.xpath("//div[text()='Delhi']"));
-
+    public void uploadPhoto(String link) {
+        wd.findElement(By.id("uploadPicture")).sendKeys(link);
+    }
+    public void submitForm() {
+        click(By.id("submit"));
     }
 
-    public void selectState(String state) {
-        click(By.xpath("(//div)[73]"));
-        click(By.xpath("//div[contains(text(),'NCR')]"));
-
+    public void hideFooter() {
+        JavascriptExecutor js =(JavascriptExecutor) wd;
+        js.executeScript("document.querySelector('footer').style.display='none';");
     }
-
-    public void uploadPhoto(String s) {
-    }
-
-//    public void checkPolicy() {
-//        Rectangle rect = wd.findElement(By.xpath("(//div[@aria-hidden='true'])[1]")).getRect();
-//        int x = rect.getX() + 5;
-//        int y = rect.getY() + 1 / 4 * rect.getHeight();
-//        Actions actions = new Actions(wd);
-//        actions.moveByOffset(x, y).click().perform();
-//
-//    }
-
 }
 
