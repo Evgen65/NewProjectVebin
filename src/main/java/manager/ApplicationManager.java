@@ -13,9 +13,9 @@ public class ApplicationManager {
     HelperStudentForm studentForm;
 
     public void init() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("load-extension=C:\\Tools\\3.15.2_0");
-        wd = new ChromeDriver(options);
+       // ChromeOptions options = new ChromeOptions();
+      //  options.addArguments("load-extension=C:\\Tools\\3.15.2_0");
+        wd = new ChromeDriver();
 
         wd.manage().window().maximize();
         wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);

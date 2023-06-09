@@ -10,16 +10,16 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'org.projectlombok:lombok:1.18.16'
-    annotationProcessor 'org.projectlombok:lombok:1.18.16'
+    compileOnly 'org.projectlombok:lombok:1.18.26'
+    annotationProcessor 'org.projectlombok:lombok:1.18.26'
 
     testCompileOnly 'org.projectlombok:lombok:1.18.16'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.26'
 
     implementation 'org.testng:testng:7.1.0'
-    implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
-    implementation 'ch.qos.logback:logback-classic:1.2.3'
-    implementation 'io.appium:java-client:7.4.1'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.8.1'
+    implementation 'ch.qos.logback:logback-classic:1.4.6'
+
 }
 
 test {

@@ -1,10 +1,5 @@
 package models;
 
-
-import groovy.transform.ToString;
-import groovy.transform.builder.Builder;
-import jdk.nashorn.internal.objects.annotations.Getter;
-import jdk.nashorn.internal.objects.annotations.Setter;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
